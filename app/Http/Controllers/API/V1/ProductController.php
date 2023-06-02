@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Validation\FirstValidationRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -20,5 +21,10 @@ class ProductController extends Controller
         Product::find($id)->delete();
 
         return response(['Success' => 'Product has been deleted'], 200);
+    }
+
+    public function validateFirst(FirstValidationRequest $request) 
+    {
+        return response(['Success' => 'Validation Successful'], 200);
     }
 }
