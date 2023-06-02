@@ -18,11 +18,11 @@ class ProductFactory extends Factory
     public function definition(): array
     {
         $category = fake()->randomElement([
-            'cosmetics',
-            'food and beverage',
-            'laundry',
-            'medicines',
-            'electronics'
+            'Cosmetics',
+            'Food and Beverage',
+            'Laundry',
+            'Medicines',
+            'Electronics'
         ]);
 
         return [
