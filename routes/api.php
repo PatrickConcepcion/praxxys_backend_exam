@@ -23,6 +23,7 @@ Route::group(['prefix' => '/products'], function() {
     Route::get('/', [ProductController::class, 'fetch']);
     Route::group(['prefix' => '/validate'], function(){
         Route::post('/first', [ProductController::class, 'validateFirst']);
+        Route::post('/second', [ProductController::class, 'validateSecond']);
     });
     Route::group(['prefix' => '/{product}'], function(){
         Route::delete('/', [ProductController::class, 'destroy']);

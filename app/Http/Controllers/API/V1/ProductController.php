@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API\V1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Validation\FirstValidationRequest;
+use App\Http\Requests\Validation\SecondValidationRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -24,6 +25,11 @@ class ProductController extends Controller
     }
 
     public function validateFirst(FirstValidationRequest $request) 
+    {
+        return response(['Success' => 'Validation Successful'], 200);
+    }
+
+    public function validateSecond(SecondValidationRequest $request)
     {
         return response(['Success' => 'Validation Successful'], 200);
     }
