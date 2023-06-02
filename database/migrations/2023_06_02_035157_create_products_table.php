@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('category');
             $table->longText('description');
-            $table->date('date_and_time');
+            $table->dateTime('date_and_time');
             $table->timestamps();
         });
     }

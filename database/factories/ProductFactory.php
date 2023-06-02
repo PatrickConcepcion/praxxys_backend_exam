@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -27,8 +28,8 @@ class ProductFactory extends Factory
         return [
             'name' => fake()->state(),
             'category' => $category,
-            'description' => \fake()->text(),
-            'date_and_time' => now()
+            'description' => fake()->text(),
+            'date_and_time' => Carbon::now()->toDateTimeString(),
         ];
     }
 }
