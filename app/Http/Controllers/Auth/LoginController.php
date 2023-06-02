@@ -56,14 +56,6 @@ class LoginController extends Controller
         } else {
             throw ValidationException::withMessages([$this->username() => 'Invalid credentials. Please try again.']);
         }
-
-        // if (Auth::attempt(['username' => $user->username, 'password' => $request->password]) || Auth::attempt(['email' => $user->email, 'password' => $request->password])){
-        //     Auth::loginUsingId($user->id);
-        //     return redirect('/home');
-        // } else {
-        //     return redirect()->back()->withErrors(['password' => 'Invalid login credentials']);
-        // }
-
     }
 
     public function username()
