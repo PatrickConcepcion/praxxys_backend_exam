@@ -123,10 +123,20 @@ export default {
             })
             .then((response) => {
                 console.log(response)
-                this.saveProduct()
+                this.updateProduct()
             })
             .error(error => console.log(error))
         },
+        async updateProduct() {
+            await axios.put('/api/products/' + this.product_id, {
+                name: this.name,
+                category: this.category,
+                description: this.description,
+                date_and_time: this.date_and_time,
+            })
+            .then(response => console.log(response))
+            .catch(error => console.log(error))
+        }
     },
     created() {
         this.getProductData()

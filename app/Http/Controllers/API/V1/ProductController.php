@@ -42,8 +42,17 @@ class ProductController extends Controller
         return response()->json(['product' => $product, 'date_and_time' => $date_and_time], 200);
     }
 
-    public function update() {
+    public function update(Request $request, Product $product) {
+        $date_and_time = Carbon::parse($request->date_and_time)->format('Y-m-d H:i:s');
 
+        $product->update([
+            'name' => $request->name,
+            'category' => $request->category,
+            'description' => $request->description,
+            'date_and_time' => $date_and_time
+        ]);
+
+        return response(['Success' => 'Product has successfully been updated'], 200);
     }
 
     public function destroy(Product $product) 
