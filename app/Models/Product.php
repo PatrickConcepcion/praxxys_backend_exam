@@ -13,6 +13,6 @@ class Product extends Model
         'name',
         'category',
         'description',
-        'date and time',
+        'date_and_time',
     ];
 }

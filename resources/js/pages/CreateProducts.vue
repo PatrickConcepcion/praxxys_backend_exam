@@ -18,9 +18,9 @@
                             <option value="Electronics">Electronics</option>
                         </select>
                     </div>
-                    <div class="form-group m5-3">
+                    <div class="form-group mt-3">
                         <label>Description</label>
-                        <textarea class="form-control" v-model="description"></textarea>
+                        <Tiptap  v-model="description" />
                     </div>
                     <div class="text-center mt-3">
                         <button class="btn btn-success">Next</button>
@@ -41,21 +41,40 @@
                 </form>
             </div>
         </div>
+        <div v-if="thirdStep">
+            <div class="card px-3 py-4">
+                <form @submit.prevent="checkThirdValidation">
+                    <div class="form-group">
+                        <label>Date and Time</label>
+                        <input type="datetime-local" class="form-control" v-model="date_and_time">
+                    </div>
+                    <div class="text-center mt-3">
+                        <button class="btn btn-success">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 </template>
 <script>
+import Tiptap from '@/components/Tiptap.vue'
+
 export default {
     name: 'Create Products',
     data() {
         return {
-            firstStep: false,
-            secondStep: true,
+            firstStep: true,
+            secondStep: false,
             thirdStep: false,
             images: [],
             name: '',
             category: '',
-            description: '',
+            description: 'I am an HTML Text Editor. Enter Description Here.',
+            date_and_time: ''
         }
+    },
+    components: {
+        Tiptap
     },
     methods: {
         upload(e){
@@ -63,8 +82,6 @@ export default {
             // if (!files.length) return;
             // this.createImage(files);
             this.images = e.target.files;
-
-            console.log(this.images);
         },
         // createImage(files) {
         //     var vm = this;
@@ -103,6 +120,29 @@ export default {
             .then(()=>{
                 this.secondStep = false,
                 this.thirdStep = true
+            })
+            .catch(error => console.log(error))
+        },
+        async checkThirdValidation() {
+            await axios.post('/api/products/validate/third', {
+                date_and_time: this.date_and_time
+            })
+            .then((response) => {
+                console.log(response)
+                this.saveProduct()
+            })
+            .error(error => console.log(error))
+        },
+        async saveProduct() {
+            await axios.post('/api/products/', {
+                name: this.name,
+                category: this.category,
+                description: this.description,
+                date_and_time: this.date_and_time,
+            })
+            .then((response) => {
+                console.log(response)
+                document.location.href="/products"
             })
             .catch(error => console.log(error))
         }
