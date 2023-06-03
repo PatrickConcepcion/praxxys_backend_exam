@@ -134,7 +134,9 @@ export default {
                 description: this.description,
                 date_and_time: this.date_and_time,
             })
-            .then(response => console.log(response))
+            .then(()=>{
+                document.location.href="/products/"
+            })
             .catch(error => console.log(error))
         }
     },
