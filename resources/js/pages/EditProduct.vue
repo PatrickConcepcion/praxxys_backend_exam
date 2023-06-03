@@ -92,9 +92,6 @@ export default {
     },
     methods: {
         upload(e){
-            // var files = e.target.files || e.dataTransfer.files;
-            // if (!files.length) return;
-            // this.createImage(files);
             this.images = e.target.files;
         },
         async getProductData() {
@@ -190,6 +187,6 @@ export default {
     }
 }
 </script>
-<style lang="">
+<style scoped>
     
 </style>
