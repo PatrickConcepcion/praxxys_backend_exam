@@ -71,19 +71,19 @@
         <div class="l-navbar" id="nav-bar">
             <nav class="nav">
                 <div> 
-                    <a href="{{ route('home') }}" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">BBBootstrap</span> </a>
+                    <a href="{{ route('home') }}" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">Praxxys</span> </a>
                     <div class="nav_list"> 
                         <a href="{{ route('home') }}" class="nav_link {{ Route::currentRouteNamed('home') ?  'active' : '' }}"> 
-                            <i class='bx bx-grid-alt nav_icon'></i> 
+                            <i class='bx bx-home nav_icon'></i> 
                             <span class="nav_name">Home</span> 
                         </a> 
                         <a href="{{ route('products.index') }}" class="nav_link {{ Route::currentRouteNamed('products.index') ?  'active' : '' }}"> 
-                            <i class='bx bx-user nav_icon'></i> 
+                            <i class='bx bx-list-ul nav_icon'></i> 
                             <span class="nav_name">Products</span> 
                         </a> 
-                        <a href="{{ route('products.create') }}" class="nav_link {{ Route::currentRouteNamed('products.index') ?  'active' : '' }}"> 
-                            <i class='bx bx-user nav_icon'></i> 
-                            <span class="nav_name">Products</span> 
+                        <a href="{{ route('products.create') }}" class="nav_link {{ Route::currentRouteNamed('products.create') ?  'active' : '' }}"> 
+                            <i class='bx bx-folder-plus nav_icon'></i> 
+                            <span class="nav_name">Create Product</span> 
                         </a> 
                     </div>
                 </div>
