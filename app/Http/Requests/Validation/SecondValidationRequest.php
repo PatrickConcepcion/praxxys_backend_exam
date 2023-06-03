@@ -22,8 +22,15 @@ class SecondValidationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'images' => ['required'],
+            'images' => ['required', 'mimes:jpg,png,jpeg'],
             'images.*' => ['required','mimes:jpg,png,jpeg'],
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'mimes' => 'Only the following image formats are accepted: jpg, png, jpeg'
         ];
     }
 }

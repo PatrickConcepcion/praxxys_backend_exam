@@ -37,6 +37,7 @@
                     <div class="form-group">
                         <label>Image Upload</label>
                         <input class="form-control" multiple type="file" @change="upload">
+                        <p class="text-danger m-0">{{ images_validation }}</p>
                     </div>
                     <div class="text-center mt-3">
                         <button class="btn btn-success">Next</button>
@@ -77,6 +78,7 @@ export default {
             name_validation: '',
             category_validation: '',
             description_validation: '',
+            images_validation: '',
         }
     },
     components: {
@@ -114,6 +116,10 @@ export default {
                 this.secondStep = true
             })
             .catch((error)=>{
+                this.name_validation = ''
+                this.category_validation = ''
+                this.description_validation = ''
+
                 if(error.response.data.errors.name) {
                     this.name_validation = error.response.data.errors.name[0]
                 }
@@ -139,7 +145,13 @@ export default {
                 this.secondStep = false,
                 this.thirdStep = true
             })
-            .catch(error => console.log(error))
+            .catch((error)=>{
+                this.images_validation = ''
+
+                if(error.response.data.errors.images) {
+                    this.images_validation = error.response.data.errors.images[0]
+                }
+            })
         },
         async checkThirdValidation() {
             await axios.post('/api/products/validate/third', {
