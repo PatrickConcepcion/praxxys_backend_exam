@@ -1,5 +1,6 @@
 <template>
     <div class="container">
+        <h3 class="text-center fw-bold">Create Product</h3>
         <div v-if="firstStep">
             <div class="card px-3 py-4">
                 <form @submit.prevent="checkFirstValidation">

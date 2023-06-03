@@ -2,21 +2,15 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
-                </div>
-            </div>
+    <h3 class="text-center fw-bold">Dashboard</h3>
+    <div class="row mx-auto">
+        <div class="col-4 mx-auto border rounded m-2 p-2">
+            <h4 class="text-center">Number of Users</h4>
+            <p class="fw-bold text-center">{{ $users->count() }}</p>
+        </div>
+        <div class="col-4 mx-auto border rounded m-2 p-2">
+            <h4 class="text-center">Total Number Products</h4>
+            <p class="fw-bold text-center">{{ $products->count() }}</p>
         </div>
     </div>
 </div>
