@@ -1,6 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-    {{ dd($product) }}
-    {{-- <create-product /> --}}
+    <edit-product :product_id="{{ $product->id }}" />
 @endsection
