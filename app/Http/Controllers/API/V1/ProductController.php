@@ -33,10 +33,8 @@ class ProductController extends Controller
         return response(['Success' => 'Product has been saved'], 200);
     }
 
-    public function edit($id) 
+    public function edit(Product $product) 
     {
-        $product = Product::find($id);
-
         $date_and_time = Carbon::parse($product->date_and_time)->format('Y-m-d\TH:i');
 
         $product->makeHidden(['date_and_time']);
@@ -44,9 +42,13 @@ class ProductController extends Controller
         return response()->json(['product' => $product, 'date_and_time' => $date_and_time], 200);
     }
 
-    public function destroy($id) 
+    public function update() {
+
+    }
+
+    public function destroy(Product $product) 
     {
-        Product::find($id)->delete();
+        $product->delete();
 
         return response(['Success' => 'Product has been deleted'], 200);
     }
