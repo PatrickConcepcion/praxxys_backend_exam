@@ -21,6 +21,8 @@ import CreateProducts from '@/pages/CreateProducts.vue'
 app.component('create-product', CreateProducts)
 import EditProduct from '@/pages/EditProduct.vue'
 app.component('edit-product', EditProduct)
+import VideosLink from '@/pages/VideosLink.vue'
+app.component('videos-link', VideosLink)
 
 /**
  * The following block of code may be used to automatically register your
