@@ -28,6 +28,8 @@ Route::group(['prefix' => '/products'], function() {
         Route::post('/third', [ProductController::class, 'validateThird']);
     });
     Route::group(['prefix' => '/{product}'], function(){
+        Route::get('/', [ProductController::class, 'edit']);
         Route::delete('/', [ProductController::class, 'destroy']);
+        Route::put('/', [ProductController::class, 'update']);
     });
 });

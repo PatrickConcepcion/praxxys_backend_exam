@@ -33,9 +33,31 @@ class ProductController extends Controller
         return response(['Success' => 'Product has been saved'], 200);
     }
 
-    public function destroy($id) 
+    public function edit(Product $product) 
     {
-        Product::find($id)->delete();
+        $date_and_time = Carbon::parse($product->date_and_time)->format('Y-m-d\TH:i');
+
+        $product->makeHidden(['date_and_time']);
+        
+        return response()->json(['product' => $product, 'date_and_time' => $date_and_time], 200);
+    }
+
+    public function update(Request $request, Product $product) {
+        $date_and_time = Carbon::parse($request->date_and_time)->format('Y-m-d H:i:s');
+
+        $product->update([
+            'name' => $request->name,
+            'category' => $request->category,
+            'description' => $request->description,
+            'date_and_time' => $date_and_time
+        ]);
+
+        return response(['Success' => 'Product has successfully been updated'], 200);
+    }
+
+    public function destroy(Product $product) 
+    {
+        $product->delete();
 
         return response(['Success' => 'Product has been deleted'], 200);
     }

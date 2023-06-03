@@ -26,7 +26,9 @@
 
 
                     <div class="float-end">
-                        <box-icon class=" action" name='edit' color="green" type='solid' ></box-icon>
+                        <a :href="`/products/edit/${product.id}`">
+                            <box-icon class=" action" name='edit' color="green" type='solid'></box-icon>
+                        </a>
                         <box-icon class="ms-2 action" color="red" type='solid' name='trash-alt' @click="deleteProduct(product.id)"></box-icon>
                     </div>
                 </div>
