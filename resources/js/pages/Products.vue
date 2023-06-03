@@ -15,21 +15,20 @@
             <a :href="`/products/create`" class="btn btn-success">Create</a>
         </div>
         <div>
-            <div class="row">
-                <div v-for="product in paginatedProducts" :key="product.id" class="col-12 col-md-8 col-lg-4 product-col shadow-lg py-2 px-3 m-3 rounded">
-                    <h4 class="text-center my-3 fw-bold">{{ product.name }}</h4>
-                    <p class="fst-italic">Description:</p>
-                    <p class="description">{{ product.description }}</p>
-                  
-                    <p><span class="fst-italic">Category: </span>{{ product.category }}</p>
-                    <p class="fst-italic">Product listed last {{ product.date_and_time }}</p>
-
-
-                    <div class="float-end">
-                        <a :href="`/products/edit/${product.id}`">
-                            <box-icon class=" action" name='edit' color="green" type='solid'></box-icon>
-                        </a>
-                        <box-icon class="ms-2 action" color="red" type='solid' name='trash-alt' @click="deleteProduct(product.id)"></box-icon>
+            <div class="row mx-auto">
+                <div v-for="product in paginatedProducts" :key="product.id" class="col-12 col-md-8 col-lg-4 py-2 px-3 mx-auto border rounded">
+                    <div class="product mx-auto">
+                        <h4 class="text-center my-3 fw-bold">{{ product.name }}</h4>
+                        <p class="fst-italic">Description:</p>
+                        <p class="description">{{ product.description }}</p>
+                        <p><span class="fst-italic">Category: </span>{{ product.category }}</p>
+                        <p class="fst-italic">Product listed last {{ product.date_and_time }}</p>
+                        <div class="float-end">
+                            <a :href="`/products/edit/${product.id}`">
+                                <box-icon class=" action" name='edit' color="green" type='solid'></box-icon>
+                            </a>
+                            <box-icon class="ms-2 action" color="red" type='solid' name='trash-alt' @click="deleteProduct(product.id)"></box-icon>
+                        </div>
                     </div>
                 </div>
             </div>
