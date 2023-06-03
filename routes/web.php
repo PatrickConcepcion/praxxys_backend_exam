@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -27,4 +28,6 @@ Route::group(['prefix' => '/products', 'as' => 'products.'], function() {
     Route::get('/create', [ProductController::class, 'create'])->name('create');
     Route::get('/edit/{product}', [ProductController::class, 'edit'])->name('show');
 });
+
+Route::get('/videos-link', [VideoController::class, 'index'])->name('videos.index');
 

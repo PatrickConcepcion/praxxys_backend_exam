@@ -85,6 +85,10 @@
                             <i class='bx bx-folder-plus nav_icon'></i> 
                             <span class="nav_name">Create Product</span> 
                         </a> 
+                        <a href="{{ route('videos.index') }}" class="nav_link {{ Route::currentRouteNamed('videos.index') ?  'active' : '' }}"> 
+                            <i class='bx bxs-videos nav_icon'></i>
+                            <span class="nav_name">Videos Link</span> 
+                        </a> 
                     </div>
                 </div>
             </nav>
