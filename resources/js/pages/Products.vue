@@ -12,7 +12,7 @@
                 <option value="Medicines">Medicines</option>
                 <option value="Electronics">Electronics</option>
             </select>
-            <a href="" class="btn btn-success">Create</a>
+            <a :href="`/products/create`" class="btn btn-success">Create</a>
         </div>
         <div>
             <div class="row">

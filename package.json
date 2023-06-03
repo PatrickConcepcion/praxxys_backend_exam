@@ -16,6 +16,9 @@
         "vue": "^3.2.37"
     },
     "dependencies": {
+        "@tiptap/pm": "^2.0.3",
+        "@tiptap/starter-kit": "^2.0.3",
+        "@tiptap/vue-3": "^2.0.3",
         "boxicons": "^2.1.4"
     }
 }

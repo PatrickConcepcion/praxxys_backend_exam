@@ -17,6 +17,8 @@ const app = createApp({})
 
 import Products from '@/pages/Products.vue'
 app.component('products', Products);
+import CreateProducts from '@/pages/CreateProducts.vue'
+app.component('create-product', CreateProducts)
 
 /**
  * The following block of code may be used to automatically register your

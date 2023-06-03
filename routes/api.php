@@ -21,6 +21,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::group(['prefix' => '/products'], function() {
     Route::get('/', [ProductController::class, 'fetch']);
+    Route::post('/', [ProductController::class, 'store']);
+    Route::group(['prefix' => '/validate'], function(){
+        Route::post('/first', [ProductController::class, 'validateFirst']);
+        Route::post('/second', [ProductController::class, 'validateSecond']);
+        Route::post('/third', [ProductController::class, 'validateThird']);
+    });
     Route::group(['prefix' => '/{product}'], function(){
         Route::delete('/', [ProductController::class, 'destroy']);
     });
