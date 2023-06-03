@@ -37,7 +37,7 @@
                     <div class="form-group">
                         <label>Image Upload</label>
                         <input class="form-control" multiple type="file" @change="upload">
-                        <p class="text-danger m-0">{{ images_validation }}</p>
+                        <p class="text-danger m-0" v-for="error in images_validation">{{ error }}</p>
                     </div>
                     <div class="text-center mt-3">
                         <button class="btn btn-success">Next</button>
@@ -51,6 +51,7 @@
                     <div class="form-group">
                         <label>Date and Time</label>
                         <input type="datetime-local" class="form-control" v-model="date_and_time">
+                        <p class="text-danger m-0">{{ date_and_time_validation }}</p>
                     </div>
                     <div class="text-center mt-3">
                         <button class="btn btn-success">Submit</button>
@@ -67,8 +68,8 @@ export default {
     name: 'Create Products',
     data() {
         return {
-            firstStep: true,
-            secondStep: false,
+            firstStep: false,
+            secondStep: true,
             thirdStep: false,
             images: [],
             name: '',
@@ -79,6 +80,7 @@ export default {
             category_validation: '',
             description_validation: '',
             images_validation: '',
+            date_and_time_validation: '',
         }
     },
     components: {
@@ -148,8 +150,8 @@ export default {
             .catch((error)=>{
                 this.images_validation = ''
 
-                if(error.response.data.errors.images) {
-                    this.images_validation = error.response.data.errors.images[0]
+                if(error.response.data.errors) {
+                    this.images_validation = error.response.data.errors
                 }
             })
         },
@@ -161,7 +163,13 @@ export default {
                 console.log(response)
                 this.saveProduct()
             })
-            .error(error => console.log(error))
+            .catch((error)=>{
+                this.date_and_time_validation = ''
+
+                if(error.response.data.errors.date_and_time) {
+                    this.date_and_time_validation = error.response.data.errors.date_and_time[0]
+                }
+            })
         },
         async saveProduct() {
             await axios.post('/api/products/', {
