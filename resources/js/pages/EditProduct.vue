@@ -7,6 +7,7 @@
                     <div class="form-group">
                         <label>Name</label>
                         <input class="form-control" type="text" v-model="name">
+                        <p class="text-danger m-0">{{ name_validation }}</p>
                     </div>
                     <div class="form-group mt-3">
                         <label>Category</label>
@@ -18,10 +19,12 @@
                             <option value="Medicines">Medicines</option>
                             <option value="Electronics">Electronics</option>
                         </select>
+                        <p class="text-danger m-0">{{ category_validation }}</p>
                     </div>
                     <div class="form-group mt-3">
                         <label>Description</label>
                         <Tiptap  v-model="description" />
+                        <p class="text-danger m-0">{{ description_validation }}</p>
                     </div>
                     <div class="text-center mt-3">
                         <button class="btn btn-success">Next</button>
@@ -78,6 +81,9 @@ export default {
             description: '',
             images: [],
             date_and_time: '',
+            name_validation: '',
+            category_validation: '',
+            description_validation: '',
         }
     },
     methods: {
@@ -101,7 +107,19 @@ export default {
                 this.firstStep = false
                 this.secondStep = true
             })
-            .catch(error => console.log(error))
+            .catch((error)=>{
+                if(error.response.data.errors.name) {
+                    this.name_validation = error.response.data.errors.name[0]
+                }
+
+                if(error.response.data.errors.category) {
+                    this.category_validation = error.response.data.errors.category[0]
+                }
+
+                if(error.response.data.errors.description) {
+                    this.description_validation = error.response.data.errors.description[0]
+                }
+            })
         },
         async checkSecondValidation() {
             await axios.post('/api/products/validate/second', {
